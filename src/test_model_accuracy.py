@@ -17,8 +17,6 @@ print(f"Loading test labels from: {TEST_LABELS_PATH}")
 
 try:
     # Load the test data
-    test_df = pd.read_csv(TEST_DATA_PATH)
-
     # Separate features (X) and true labels (y)
     # Ensure these column names match what your model was trained on and expects
 	# Load the test features
