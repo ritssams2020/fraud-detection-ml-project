@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the application code into the container at /app
 # Note: 'app/' refers to the 'app' directory relative to the BUILD CONTEXT (which will now be the project root)
 COPY app/app.py /app/app.py
-COPY app/requirements.txt /app/requirements.txt # Make sure this is still correct if requirements.txt was in 'app/'
+COPY requirements.txt /app/requirements.txt # Make sure this is still correct if requirements.txt was in 'app/'
 # Copy the trained model from the model/ directory (relative to build context) into /app
 COPY model/fraud_model.pkl /app/fraud_model.pkl
 
