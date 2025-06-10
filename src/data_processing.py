@@ -5,7 +5,7 @@ print("Running data_preprocessing.py...")
 
 # Load data (assuming input.csv is in the 'data' directory relative to the project root)
 try:
-    df = pd.read_csv('../data/input.csv')
+    df = pd.read_csv('data/input.csv')
     print("input.csv loaded successfully.")
 except FileNotFoundError:
     print("Error: input.csv not found. Make sure it's in the 'data/' directory.")
