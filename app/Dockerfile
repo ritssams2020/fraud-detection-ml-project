@@ -1,22 +1,21 @@
-# Use a lightweight Python base image suitable for production
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim-buster
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file and install Python dependencies first.
-# This leverages Docker's layer caching for faster builds if dependencies don't change.
-COPY requirements.txt .
+# Copy the application code into the container at /app
+# Note: 'app/' refers to the 'app' directory relative to the BUILD CONTEXT (which will now be the project root)
+COPY app/app.py /app/app.py
+COPY app/requirements.txt /app/requirements.txt # Make sure this is still correct if requirements.txt was in 'app/'
+# Copy the trained model from the model/ directory (relative to build context) into /app
+COPY model/fraud_model.pkl /app/fraud_model.pkl
+
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Flask application code.
-# The trained model ('fraud_model.pkl') will be copied into this directory by Jenkins
-# BEFORE the Docker build is run in the Jenkins build step.
-COPY app.py .
-
-# Expose the port on which the Flask application will run
+# Expose the port the app runs on
 EXPOSE 5000
 
-# Command to run the application using Gunicorn (a production-grade WSGI server)
-# 'app:app' refers to the 'app' Flask instance within the 'app.py' module
+# Run app.py using Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
