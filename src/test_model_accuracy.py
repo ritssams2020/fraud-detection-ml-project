@@ -6,7 +6,7 @@ import json
 import os
 
 # Configuration
-TEST_DATA_PATH = '../data/processed_test_data.csv'
+TEST_DATA_PATH = 'data/processed_test_data.csv'
 API_URL = 'http://localhost:5001/predict' # URL of the staging model
 ACCURACY_THRESHOLD = 0.90 # Define your accuracy threshold
 
