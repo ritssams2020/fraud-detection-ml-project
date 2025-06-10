@@ -1,4 +1,4 @@
-mport pandas as pd
+import pandas as pd
 import requests
 import sys
 from sklearn.metrics import accuracy_score
