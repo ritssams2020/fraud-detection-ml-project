@@ -6,12 +6,14 @@ import json
 import os
 
 # Configuration
-TEST_DATA_PATH = 'data/processed_test_data.csv'
+TEST_FEATURES_PATH = 'data/processed_test_data.csv' # Path for X_test
+TEST_LABELS_PATH = 'data/y_test.csv'             # Path for y_test
 API_URL = 'http://localhost:5001/predict' # URL of the staging model
 ACCURACY_THRESHOLD = 0.90 # Define your accuracy threshold
 
 print(f"--- Running Model Validation in Staging ---")
-print(f"Loading test data from: {TEST_DATA_PATH}")
+print(f"Loading test features from: {TEST_FEATURES_PATH}")
+print(f"Loading test labels from: {TEST_LABELS_PATH}")
 
 try:
     # Load the test data
@@ -19,8 +21,10 @@ try:
 
     # Separate features (X) and true labels (y)
     # Ensure these column names match what your model was trained on and expects
-    X_test = test_df[['amount', 'amount_per_location', 'location', 'is_amex']]
-    y_true = test_df['is_fraud'] # Assuming 'is_fraud' is your target column
+	# Load the test features
+    X_test = pd.read_csv(TEST_FEATURES_PATH)
+    # Load the true labels for the test set
+    y_true = pd.read_csv(TEST_LABELS_PATH).squeeze() # .squeeze() to convert DataFrame to Series
 
     print(f"Test data loaded. Number of samples: {len(X_test)}")
 
