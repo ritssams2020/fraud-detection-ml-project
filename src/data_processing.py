@@ -21,7 +21,7 @@ X = df[['amount', 'amount_per_location', 'location', 'is_amex']]
 y = df['is_fraud']
 
 # Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.01, random_state=42, stratify=y) # Small test_size for quick generation
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y) # Small test_size for quick generation
 
 # Save processed data (relative to the project root)
 # Ensure the 'data' directory exists
