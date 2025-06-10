@@ -9,7 +9,7 @@ import os
 TEST_FEATURES_PATH = 'data/processed_test_data.csv' # Path for X_test
 TEST_LABELS_PATH = 'data/y_test.csv'             # Path for y_test
 API_URL = 'http://172.17.0.1:5001/predict' # URL of the staging model
-ACCURACY_THRESHOLD = 0..65 # Define your accuracy threshold
+ACCURACY_THRESHOLD = 0.65 # Define your accuracy threshold
 
 print(f"--- Running Model Validation in Staging ---")
 print(f"Loading test features from: {TEST_FEATURES_PATH}")
