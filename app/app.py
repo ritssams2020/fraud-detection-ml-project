@@ -2,9 +2,11 @@ import joblib
 from flask import Flask, request, jsonify
 import pandas as pd
 import os
+from flask_cors import CORS # <--- Add this line
+
 
 app = Flask(__name__)
-
+ORS(app) # <--- Add this line right after app initialization to enable CORS for all routes
 # --- Model Loading (Global Scope) ---
 # This will load the model once when the Flask app is initialized by Gunicorn.
 model = None

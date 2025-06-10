@@ -5,3 +5,4 @@ joblib
 flask
 gunicorn
 requests
+flask-cors
